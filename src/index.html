@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Loading</title>
+	<link rel="stylesheet" href="./css/styles.css" />
+	<script src="./js/jquery.js"></script>
+</head>
+
+<body>
+	<h1>Please Wait</h1>
+	<div></div>
+	<script src="./js/script.js"></script>
+	<script>
+		$("div")
+			.timer({
+				message: "A new website for you coming soon",
+			})
+			.hide()
+			.fadeIn(2500);
+	</script>
+</body>
+
+</html>
