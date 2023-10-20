@@ -3,35 +3,31 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  margin-top: 15%;
   height: 100%;
   background: linear-gradient(to left, rgb(108, 61, 84), rgb(0, 8, 12));
 }
 
 h1 {
-  font-weight: lighter;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", sans-serif;
+  font-size: 3;
+  color: #b09b93;
+}
+
+.digit-style {
+  font-size: 4rem;
+  padding: 10px;
+  color: #b09b93;
+}
+
+.time-separator {
   font-size: 3rem;
   color: #b09b93;
 }
 
-.timer .digit {
-  padding: 20px 15px 15px 20px;
-  margin: 5px;
-  font-size: 2em;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  color: #b09b93;
-}
-
-.timer .separator {
-  margin: 5px;
-  font-size: 3em;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  color: #b09b93;
-}
-
-.timer .message {
-  padding-top: 25px;
+.message {
   text-align: center;
-  font-size: 1.8em;
-  font-weight: lighter;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", sans-serif;
   color: #b09b93;
 }

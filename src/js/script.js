@@ -1,59 +1,60 @@
 (function ($) {
-  $.fn.timer = function (options) {
-    const finalOptions = $.extend(
+  $.fn.timer = function (config) {
+    const customOptions = $.extend(
       {
         message: "Coming soon!",
         time: "23:59:59",
       },
-      options
+      config
     );
 
-    const hourTens = $('<span class="digit">').html("0");
-    const hourOnes = $('<span class="digit">').html("0");
-    const minuteTens = $('<span class="digit">').html("0");
-    const minuteOnes = $('<span class="digit">').html("0");
-    const secondTens = $('<span class="digit">').html("0");
-    const secondOnes = $('<span class="digit">').html("0");
+    const tensHours = $('<span class="digit-style">').html("0");
+    const onesHours = $('<span class="digit-style">').html("0");
+    const tensMinutes = $('<span class="digit-style">').html("0");
+    const onesMinutes = $('<span class="digit-style">').html("0");
+    const tensSeconds = $('<span class="digit-style">').html("0");
+    const onesSeconds = $('<span class="digit-style">').html("0");
 
-    const hourSeparator = $('<span class="separator">').html(":");
-    const minuteSeparator = $('<span class="separator">').html(":");
-    const message = $('<div class ="message">').html(finalOptions.message);
+    const hourColon = $('<span class="time-separator">').html(":");
+    const minuteColon = $('<span class="time-separator">').html(":");
+
+    const message = $('<div class="message">').html(customOptions.message);
 
     $(this).addClass("timer");
     $(this).append(
-      hourTens,
-      hourOnes,
-      hourSeparator,
-      minuteTens,
-      minuteOnes,
-      minuteSeparator,
-      secondTens,
-      secondOnes,
+      tensHours,
+      onesHours,
+      hourColon,
+      tensMinutes,
+      onesMinutes,
+      minuteColon,
+      tensSeconds,
+      onesSeconds,
       message
     );
 
-    const regex = new RegExp(/(\d\d):(\d\d):(\d\d)/);
-    const targetTime = regex.exec(finalOptions.time);
+    const regexStructure = new RegExp(/(\d\d):(\d\d):(\d\d)/);
+    const timeComponents = regexStructure.exec(customOptions.time);
 
     let timer = setInterval(() => {
-      const now = new Date();
-      const target = new Date();
-      target.setHours(targetTime[1]);
-      target.setMinutes(targetTime[2]);
-      target.setSeconds(targetTime[3]);
+      const currentTime = new Date();
+      const timeObject = new Date();
+      timeObject.setHours(parseInt(timeComponents[1]));
+      timeObject.setMinutes(parseInt(timeComponents[2]));
+      timeObject.setSeconds(parseInt(timeComponents[3]));
 
-      const timeDifferenceInMilliseconds = target.getTime() - now.getTime();
-      if (timeDifferenceInMilliseconds >= 0) {
-        const difference = regex.exec(
-          new Date(timeDifferenceInMilliseconds).toISOString()
+      const timeDifference = timeObject - currentTime;
+      if (timeDifference >= 0) {
+        const difference = regexStructure.exec(
+          new Date(timeDifference).toISOString().substr(11, 8)
         );
 
-        hourTens.html(difference[1][0]);
-        hourOnes.html(difference[1][1]);
-        minuteTens.html(difference[2][0]);
-        minuteOnes.html(difference[2][1]);
-        secondTens.html(difference[3][0]);
-        secondOnes.html(difference[3][1]);
+        tensHours.html(difference[1][0]);
+        onesHours.html(difference[1][1]);
+        tensMinutes.html(difference[2][0]);
+        onesMinutes.html(difference[2][1]);
+        tensSeconds.html(difference[3][0]);
+        onesSeconds.html(difference[3][1]);
       } else {
         clearInterval(timer);
       }
