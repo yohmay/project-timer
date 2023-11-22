@@ -9,7 +9,7 @@ This repository contains a simple timer project created with JavaScript, HTML, a
 
 ## How to Use
 
-1. Clone this repository:
+Clone this repository:
 
    ```bash
    git clone https://github.com/yohmay/project-timer.git
