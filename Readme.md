@@ -1,5 +1,4 @@
 # Timer Project
-
 This repository contains a simple timer project created with JavaScript, HTML, and CSS.
 
 ## Overview
@@ -8,7 +7,6 @@ This repository contains a simple timer project created with JavaScript, HTML, a
 </div>
 
 ## How to Use
-
 Clone this repository:
 
    ```bash
